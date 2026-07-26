@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    background-color: #0a0a0b;
+    color: #d4d4d8;
+  }
+  body {
+    @apply antialiased;
+  }
+}
+
+@layer components {
+  .gear-card {
+    @apply relative rounded-lg border border-ink-600 bg-ink-700/50 p-5 transition-all hover:border-ink-400;
+  }
+  .input-field {
+    @apply w-full rounded-md border border-ink-500 bg-ink-800 px-3 py-2 text-ink-100 placeholder-ink-300 outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors;
+  }
+  .btn-primary {
+    @apply rounded-md bg-accent px-4 py-2 font-medium text-ink-900 hover:bg-accent-dim transition-colors;
+  }
+  .btn-ghost {
+    @apply rounded-md border border-ink-500 px-4 py-2 text-ink-100 hover:border-ink-300 hover:bg-ink-700 transition-colors;
+  }
+  .label-tag {
+    @apply inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-xs font-medium;
+  }
+}
