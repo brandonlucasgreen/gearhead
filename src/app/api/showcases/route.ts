@@ -15,7 +15,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Name is required" }, { status: 400 });
     }
 
-    const showcase = createShowcase({
+    const showcase = await createShowcase({
       name: name.trim(),
       bio: (bio || "").trim(),
       gear: (gear || []).filter((g) => g.name && g.name.trim()).map((g) => ({
@@ -43,7 +43,7 @@ export async function GET(req: NextRequest) {
   if (!token) {
     return NextResponse.json({ error: "Token required" }, { status: 400 });
   }
-  const showcase = getShowcaseByToken(token);
+  const showcase = await getShowcaseByToken(token);
   if (!showcase) {
     return NextResponse.json({ error: "Not found" }, { status: 404 });
   }
@@ -65,7 +65,7 @@ export async function PUT(req: NextRequest) {
       return NextResponse.json({ error: "Token required" }, { status: 400 });
     }
 
-    const updated = updateShowcase(token, {
+    const updated = await updateShowcase(token, {
       name: name?.trim(),
       bio: bio?.trim(),
       gear: gear
@@ -96,7 +96,7 @@ export async function DELETE(req: NextRequest) {
   if (!token) {
     return NextResponse.json({ error: "Token required" }, { status: 400 });
   }
-  const ok = deleteShowcase(token);
+  const ok = await deleteShowcase(token);
   if (!ok) {
     return NextResponse.json({ error: "Not found" }, { status: 404 });
   }

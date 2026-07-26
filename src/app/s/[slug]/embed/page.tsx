@@ -9,7 +9,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 export default async function EmbedPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const showcase = getShowcase(slug);
+  const showcase = await getShowcase(slug);
   if (!showcase) notFound();
 
   const categoryMap = Object.fromEntries(CATEGORIES.map((c) => [c.value, c]));
